@@ -88,8 +88,8 @@ Possibilité location vidéoprojecteur BENQ",
                 new Announce
                 {
                     Title = "Lecteur Dvd Philips",
-                    Address = addresses[2],
-                    Price = 25,
+                    Address = addresses[1],
+                    Price = 35,
                     Description = @" Lecteur DVD Philips lit les divx ultra plat.
 Largeur 23 cm - Longueur 36 cm - Epaisseur 4 cm
 Excellent état
