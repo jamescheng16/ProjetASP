@@ -14,8 +14,5 @@ namespace iBuy.Models
 
 
     }
-    public class CategoryDBContext : DbContext
-    {
-        public DbSet<Category> Categories { get; set; }
-    }
+    
 }

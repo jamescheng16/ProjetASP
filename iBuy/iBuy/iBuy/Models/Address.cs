@@ -9,6 +9,7 @@
         public string Name { get; set; }
 
         // Address' postal code
-        public string PostalCode { get; set; }
+        public decimal PostalCode { get; set; }
     }
+
 }

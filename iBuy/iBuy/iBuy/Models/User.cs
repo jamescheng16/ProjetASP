@@ -18,8 +18,4 @@ namespace iBuy.Models
         public decimal PhoneNumber { get; set; }
     }
 
-    public class UserDBContext : DbContext
-    {
-        public DbSet<User> Users { get; set; }
-    }
 }
