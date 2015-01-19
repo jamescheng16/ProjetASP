@@ -29,12 +29,12 @@ namespace iBuy.Models
         public int Type { get; set; }
 
         // The annoucement's address
-        public Address Address { get; set; }
+        public virtual Address Address { get; set; }
 
         // Publisher
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         // Category
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
