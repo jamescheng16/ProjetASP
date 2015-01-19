@@ -23,11 +23,11 @@ namespace iBuy.DAL
             // create user test data
             var users = new List<User>()
             {
-                new User {Mail = "test1@test.com", Password = "1234", PhoneNumber = 12345678},
-                new User {Mail = "test2@test.com", Password = "1234", PhoneNumber = 12345678},
-                new User {Mail = "test3@test.com", Password = "1234", PhoneNumber = 12345678},
-                new User {Mail = "test4@test.com", Password = "1234", PhoneNumber = 12345678},
-                new User {Mail = "admin@test.com", Password = "1234", PhoneNumber = 12345678},
+                new User {Email = "test1@test.com", PasswordHash = "1234", PhoneNumber = 12345678.ToString()},
+                new User {Email = "test2@test.com", PasswordHash = "1234", PhoneNumber = 12345678.ToString()},
+                new User {Email = "test3@test.com", PasswordHash = "1234", PhoneNumber = 12345678.ToString()},
+                new User {Email = "test4@test.com", PasswordHash = "1234", PhoneNumber = 12345678.ToString()},
+                new User {Email = "admin@test.com", PasswordHash = "1234", PhoneNumber = 12345678.ToString()},
             };
             users.ForEach(u => context.Users.Add(u));
             context.SaveChanges();

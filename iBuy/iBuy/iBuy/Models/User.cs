@@ -6,16 +6,9 @@ using System.Web;
 
 namespace iBuy.Models
 {
-    public class User
+    public class User : ApplicationUser
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-
-        public string Password { get; set; }
-
-        public string Mail { get; set; }
-
-        public decimal PhoneNumber { get; set; }
+        public override string Id { get; set; }
 
         public virtual ICollection<Announce> Announces { get; set; } 
     }
