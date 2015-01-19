@@ -16,6 +16,8 @@ namespace iBuy.Models
         public string Mail { get; set; }
 
         public decimal PhoneNumber { get; set; }
+
+        public virtual ICollection<Announce> Announces { get; set; } 
     }
 
 }

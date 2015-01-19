@@ -1,4 +1,7 @@
-﻿namespace iBuy.Models
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace iBuy.Models
 {
     public class Address
     {
@@ -6,10 +9,13 @@
         public int Id { get; set; }
 
         // Address's name
-        public string Name { get; set; }
+        public string City { get; set; }
 
         // Address' postal code
         public decimal PostalCode { get; set; }
+
+        public virtual ICollection<Announce> Announces { get; set; }
+
     }
 
 }
