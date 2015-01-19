@@ -5,7 +5,7 @@ using iBuy.Models;
 
 namespace iBuy.DAL
 {
-    public class AnnounceInitializer: System.Data.Entity. DropCreateDatabaseIfModelChanges<AnnounceContext>
+    public class AnnounceInitializer: System.Data.Entity. DropCreateDatabaseAlways<AnnounceContext>
     {
         protected override void Seed(AnnounceContext context)
         {
@@ -88,7 +88,7 @@ Possibilité location vidéoprojecteur BENQ",
                 new Announce
                 {
                     Title = "Lecteur Dvd Philips",
-                    Address = addresses[1],
+                    Address = addresses[2],
                     Price = 35,
                     Description = @" Lecteur DVD Philips lit les divx ultra plat.
 Largeur 23 cm - Longueur 36 cm - Epaisseur 4 cm
