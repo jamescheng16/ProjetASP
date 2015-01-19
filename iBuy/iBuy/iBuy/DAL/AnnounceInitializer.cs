@@ -9,6 +9,7 @@ namespace iBuy.DAL
     {
         protected override void Seed(AnnounceContext context)
         {
+            // create address test data
             var addresses = new List<Address>()
             {
                 new Address {City = "Hellemmes-Lille", PostalCode = 59260},
@@ -16,7 +17,10 @@ namespace iBuy.DAL
                 new Address {City = ""}
 
             };
+            addresses.ForEach(a => context.Addresses.Add(a));
+            context.SaveChanges();
 
+            // create user test data
             var users = new List<User>()
             {
                 new User {Mail = "test1@test.com", Password = "1234", PhoneNumber = 12345678},
@@ -25,13 +29,19 @@ namespace iBuy.DAL
                 new User {Mail = "test4@test.com", Password = "1234", PhoneNumber = 12345678},
                 new User {Mail = "admin@test.com", Password = "1234", PhoneNumber = 12345678},
             };
+            users.ForEach(u => context.Users.Add(u));
+            context.SaveChanges();
 
+            // create category test data
             var categories = new List<Category>()
             {
                 new Category {Name = "Musice"},
                 new Category {Name = "Home"},
             };
+            categories.ForEach(c => context.Categories.Add(c));
+            context.SaveChanges();
 
+            // create announce test data
             var announces = new List<Announce>()
             {
                 new Announce
@@ -92,6 +102,7 @@ Uniquement par téléphone",
                     Type = 0
                 }
             };
+            announces.ForEach(a => context.Announces.Add(a));
             context.SaveChanges();
         }
     }
