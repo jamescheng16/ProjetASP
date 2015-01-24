@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -33,12 +34,15 @@ namespace iBuy.Controllers
             {
                 return HttpNotFound();
             }
+           
             return View(announce);
         }
 
         // GET: Announces/Create
         public ActionResult Create()
         {
+            ViewBag.CityList = new MyDropDownList().getCity();
+            ViewBag.CategorieList = new MyDropDownList().getCategory();
             return View();
         }
 
@@ -47,10 +51,14 @@ namespace iBuy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Title,Price,Date,Isprof,Type")] Announce announce)
+        public ActionResult Create([Bind(Include = "Id,Description,Title,Price,Date,Isprof,Type")] Announce announce, FormCollection value)
         {
             if (ModelState.IsValid)
             {
+
+                Debug.WriteLine("the selected id is : " + value["icityid"] + "  and type is" + value["icityid"].GetType());
+                announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
+                announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
                 db.Announces.Add(announce);
                 db.SaveChanges();
                 return RedirectToAction("Index");

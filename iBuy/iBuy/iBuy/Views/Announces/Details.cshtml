@@ -45,6 +45,14 @@
         </dd>
 
         <dt>
+          Categorie : 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Isprof)
         </dt>
 
@@ -67,6 +75,8 @@
         <dd>
             @Html.DisplayFor(model => model.Address.City)
         </dd>
+
+
 
     </dl>
 </div>

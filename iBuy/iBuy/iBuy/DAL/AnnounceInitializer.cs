@@ -14,7 +14,11 @@ namespace iBuy.DAL
             {
                 new Address {City = "Hellemmes-Lille", PostalCode = 59260},
                 new Address {City = "Caudry", PostalCode = 59540},
-                new Address {City = "Paris",PostalCode = 75001}
+                new Address {City = "Paris",PostalCode = 75001},
+                new Address {City = "Lille",PostalCode = 59000},
+                new Address {City = "Villeneuve D'ascq",PostalCode = 59650}
+
+
 
             };
             addresses.ForEach(a => context.Addresses.Add(a));

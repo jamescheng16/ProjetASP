@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace iBuy.Models
 {
@@ -16,6 +18,7 @@ namespace iBuy.Models
 
         public virtual ICollection<Announce> Announces { get; set; }
 
+        
     }
 
 }
