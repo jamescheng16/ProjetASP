@@ -61,8 +61,8 @@ namespace iBuy.Models
         }
 
     }
-    //DropCreateDatabaseAlways
-    public class ApplicationDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    //DropCreateDatabaseIfModelChangesDropCreateDatabaseAlways
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {

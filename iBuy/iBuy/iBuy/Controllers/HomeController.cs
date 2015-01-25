@@ -24,6 +24,11 @@ namespace iBuy.Controllers
             return View(await db.Announces.ToListAsync());
         }
 
+//        public ActionResult Index()
+//        {
+//            return View();
+//        }
+
         // GET: Announces/Details/5
         public ActionResult Details(int? id)
         {
