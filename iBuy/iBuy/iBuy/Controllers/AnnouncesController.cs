@@ -5,21 +5,33 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using iBuy.DAL;
 using iBuy.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace iBuy.Controllers
 {
     public class AnnouncesController : Controller
     {
-        private AnnounceContext db = new AnnounceContext();
+        private ApplicationDbContext db = null;
+        private UserManager<ApplicationUser> manager = null;
+
+        // constructor for AnnouncesController
+        public AnnouncesController()
+        {
+            db = new ApplicationDbContext();
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        }
 
         // GET: Announces
         public ActionResult Index()
         {
-            return View(db.Announces.ToList());
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            return View(db.Announces.ToList().Where(
+                announce => announce.User.Id == currentUser.Id));
         }
 
         // GET: Announces/Details/5
@@ -51,12 +63,13 @@ namespace iBuy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Title,Price,Date,Isprof,Type")] Announce announce, FormCollection value)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Description,Title,Price,Date,Isprof,Type")] Announce announce, FormCollection value)
         {
+            var currentUser = await manager.FindByIdAsync(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
-
                 Debug.WriteLine("the selected id is : " + value["icityid"] + "  and type is" + value["icityid"].GetType());
+<<<<<<< HEAD
                 if (value["icityid"].Count() >= 1)
                 {
                     announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
@@ -66,8 +79,13 @@ namespace iBuy.Controllers
                 {
                     announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
                 }
+=======
+                announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
+                announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
+                announce.User = currentUser;
+>>>>>>> origin/master
                 db.Announces.Add(announce);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -138,6 +156,12 @@ namespace iBuy.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> All()
+        {
+            return View(await db.Announces.ToListAsync());
         }
     }
 }

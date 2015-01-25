@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.Owin.BuilderProperties;
 
 namespace iBuy.Models
@@ -32,7 +33,7 @@ namespace iBuy.Models
         public virtual Address Address { get; set; }
 
         // Publisher
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         // Category
         public virtual Category Category { get; set; }
