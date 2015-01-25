@@ -7,14 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using iBuy.DAL;
 using iBuy.Models;
 
 namespace iBuy.Controllers
 {
     public class AnnouncesController : Controller
     {
-        private AnnounceContext db = new AnnounceContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Announces
         public ActionResult Index()

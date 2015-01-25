@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using iBuy.DAL;
 
 namespace iBuy.Models
 {
@@ -13,11 +12,11 @@ namespace iBuy.Models
     /// </summary>
     public class MyDropDownList
     {
-        private AnnounceContext _db = null;
+        private ApplicationDbContext _db = null;
 
         public MyDropDownList()
         {
-            _db= new AnnounceContext();
+            _db= new ApplicationDbContext();
 
 
         }
@@ -35,7 +34,7 @@ namespace iBuy.Models
 
         public SelectList getCategory()
         {
-            IEnumerable<SelectListItem> categorieList = (from m in _db.Categories select m).AsEnumerable().Select(m => new SelectListItem() { Text = m.Name, Value = m.ID.ToString() });
+            IEnumerable<SelectListItem> categorieList = (from m in _db.Categories select m).AsEnumerable().Select(m => new SelectListItem() { Text = m.Name, Value = m.Id.ToString() });
             return new SelectList(categorieList, "Value", "Text", icategoryid);
         }
     }
