@@ -57,8 +57,15 @@ namespace iBuy.Controllers
             {
 
                 Debug.WriteLine("the selected id is : " + value["icityid"] + "  and type is" + value["icityid"].GetType());
-                announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
-                announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
+                if (value["icityid"].Count() >= 1)
+                {
+                    announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
+                }
+
+                if (value["icategorieid"].Count() >= 1)
+                {
+                    announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
+                }
                 db.Announces.Add(announce);
                 db.SaveChanges();
                 return RedirectToAction("Index");
