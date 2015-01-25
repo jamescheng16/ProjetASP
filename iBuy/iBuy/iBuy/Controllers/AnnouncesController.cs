@@ -69,7 +69,7 @@ namespace iBuy.Controllers
             if (ModelState.IsValid)
             {
                 Debug.WriteLine("the selected id is : " + value["icityid"] + "  and type is" + value["icityid"].GetType());
-<<<<<<< HEAD
+
                 if (value["icityid"].Count() >= 1)
                 {
                     announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
@@ -79,11 +79,10 @@ namespace iBuy.Controllers
                 {
                     announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
                 }
-=======
-                announce.Category = db.Categories.Find(Int32.Parse(value["icategorieid"]));
-                announce.Address = db.Addresses.Find(Int32.Parse(value["icityid"]));
+
+    
                 announce.User = currentUser;
->>>>>>> origin/master
+
                 db.Announces.Add(announce);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
