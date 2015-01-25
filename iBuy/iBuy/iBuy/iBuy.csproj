@@ -253,6 +253,7 @@
     <Content Include="Views\Announces\Details.cshtml" />
     <Content Include="Views\Announces\Edit.cshtml" />
     <Content Include="Views\Announces\Index.cshtml" />
+    <Content Include="Views\Announces\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
