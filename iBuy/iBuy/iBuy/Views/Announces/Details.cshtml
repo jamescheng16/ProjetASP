@@ -76,7 +76,12 @@
             @Html.DisplayFor(model => model.Address.City)
         </dd>
 
-
+        <dt>
+            Contact :
+        </dt>
+        <dd>
+            <a href="mailto:@Html.DisplayFor(model => model.User.Email)">@Html.DisplayFor(model => model.User.Email)</a>
+        </dd>
 
     </dl>
 </div>
